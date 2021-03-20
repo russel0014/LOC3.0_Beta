@@ -1,0 +1,48 @@
+{% extends 'basic.html' %}
+
+
+{% block body %} 
+
+
+<nav id="header" class="navbar navbar-fixed-top">
+    <div id="header-container" class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="brand" class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+				{% csrf_token %}
+				<li><a href="/signin">login</a></li>
+            </ul>
+        </div><!-- /.nav-collapse -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+<div class="landingpage"></div>
+      <div class="rect" id="blue" >
+
+	  <form action="main" method="POST">
+  
+		{% csrf_token %}
+		<br>
+		<br><br><br><br>
+		<input type="text" name="first_name" placeholder="first_name"><br>
+		<input type="text" name="last_name" placeholder="last_name"><br>
+		<input type="text" name="user_name" placeholder="user_name"><br>
+		<input type="email" name="email" placeholder="email"><br>
+		<input type="password" name="password" placeholder="password"><br>
+		<input type="password" name="validpassword" placeholder="validpassword"><br>
+		<input type="submit">
+	
+	  </form>
+    </div>  
+     
+{% endblock %}

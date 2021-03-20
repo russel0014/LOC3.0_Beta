@@ -26,23 +26,25 @@ def signin(request):
             else:
                 user=User.objects.create_user(username=user_name,password=password,first_name=first_name,email=email,last_name=last_name)
                 user.save()
+                return render(request,"login.html")
         else:
             messages.info(request,"username taken")
             return redirect('index')
         return redirect('/') 
     else:    
         return render(request,"signin.html")
-
-    def login(request) :
+        
+def login(request) :
         if request.method=='POST' :
-            username=request.POST['username']
+            user_name=request.POST['user_name']
             password=request.POST['password']
-            user=auth.authenticate(username=username,password='password')
+            user=auth.authenticate(username=user_name,password=password)
             if user is not None:
                 auth.login(request,user)
-                return redirect("/")
+                return redirect('index')
             else:
-                messages.info(request,'login')
+                messages.info(request,'invalid')
+                return redirect('login')
         else :
             return render(request,'login.html')
 

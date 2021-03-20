@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# Create your consumer models here.
 class Company(models.Model):
     user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     name=models.CharField(max_length=200,null=True)
@@ -13,13 +13,14 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
-
+# Create your Candidate models here.
 class Candidates(models.Model):
     category=(
         ('Male','male'),
         ('Female','female'),
         ('Other','other'),
     )
+    user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     name=models.CharField(max_length=200,null=True)
     dob=models.DateField(null=True)
     gender= models.CharField(max_length=200,null=True,choices=category)
@@ -27,5 +28,7 @@ class Candidates(models.Model):
     email= models.CharField(max_length=200,null=True)
     resume=models.FileField(null=True)
     company=models.ManyToManyField(Company,blank=True)
+    is_recruiter=models.BooleanField(default=False)
     def __str__(self):
         return self.name
+

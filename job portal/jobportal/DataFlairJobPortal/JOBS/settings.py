@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'DataFlairJobPortal.urls'
+ROOT_URLCONF = 'JOBS.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DataFlairJobPortal.wsgi.application'
+WSGI_APPLICATION = 'JOBS.wsgi.application'
 
 
 # Database

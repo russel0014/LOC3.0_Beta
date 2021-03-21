@@ -20,7 +20,6 @@ class Candidates(models.Model):
         ('Female','female'),
         ('Other','other'),
     )
-    user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     name=models.CharField(max_length=200,null=True)
     dob=models.DateField(null=True)
     gender= models.CharField(max_length=200,null=True,choices=category)
@@ -28,7 +27,6 @@ class Candidates(models.Model):
     email= models.CharField(max_length=200,null=True)
     resume=models.FileField(null=True)
     company=models.ManyToManyField(Company,blank=True)
-    is_recruiter=models.BooleanField(default=False)
     def __str__(self):
         return self.name
 
